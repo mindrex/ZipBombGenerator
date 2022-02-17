@@ -1,0 +1,39 @@
+apply plugin: "java"
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.fabric.io/public" }
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileJava.options.encoding = "utf-8"
+
+dependencies {
+    compileOnly fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'org.apache.commons:commons-compress:1.21'
+    compileOnly "org.tukaani:xz:1.9"
+    compileOnly 'com.github.luben:zstd-jni:1.5.2-1@aar'
+    compileOnly "org.brotli:dec:0.1.2"
+}
